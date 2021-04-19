@@ -1,5 +1,7 @@
 package cn.ekgc.addrbook.pojo.vo;
 
+import cn.ekgc.addrbook.util.Constants;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -19,8 +21,16 @@ public class PageVO<E> implements Serializable {
 
 	public PageVO() {}
 	public PageVO(Integer pageNum, Integer pageSize) {
-		this.pageNum = pageNum;
-		this.pageSize = pageSize;
+		if (pageNum != null && pageNum > 0) {
+			this.pageNum = pageNum;
+		} else {
+			this.pageNum = Constants.PAGE_NUM;
+		}
+		if (pageSize != null && pageSize > 0) {
+			this.pageSize = pageSize;
+		} else {
+			this.pageSize = Constants.PAGE_SIZE;
+		}
 	}
 
 	public Integer getPageNum() {
